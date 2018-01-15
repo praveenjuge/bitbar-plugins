@@ -22,4 +22,4 @@ now = datetime.datetime.now()
 seconds = (now - birthday).total_seconds()
 years = seconds / 31536000
 
-print "%.4f" % years # change the number to change precision
+print "%.2f" % years # change the number to change precision
