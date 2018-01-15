@@ -20,11 +20,11 @@ batt_cycles=( $(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{pri
 
 # Format things
 if [ "$power_source" = "'ACPower'" ]; then
-	source_label="AC Power";
+	source_label="AC";
 	time_label="Charged in:";
 else
-	source_label="Internal Battery";
-	time_label="Time remaining:";
+	source_label="Battery";
+	time_label="Remaining:";
 fi
 
 if [ "$remaining_time" = "(no" ]; then remaining_time="Calculating..."; fi

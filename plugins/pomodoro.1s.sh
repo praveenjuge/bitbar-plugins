@@ -8,7 +8,7 @@
 # <bitbar.image>http://i.imgur.com/T0zFY89.png</bitbar.image>
 
 WORK_TIME=25
-BREAK_TIME=3
+BREAK_TIME=5
 
 SAVE_LOCATION=$TMPDIR/bitbar-promodo
 TOMATO='🍅'

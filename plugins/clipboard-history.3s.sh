@@ -70,12 +70,12 @@ if [[ -e "$tmp_dir/item-1.pb" ]]; then
 
   echo 'History'
 
-  # Print up to 36 characters of each historical item
+  # Print up to 30 characters of each historical item
   for i in {1..10}
   do
     if [ -e "$tmp_dir/item-$i.pb" ]; then
-      content="$(head -c 36 "$tmp_dir/item-$i.pb")"
-      if (( $(wc -c "$tmp_dir/item-$i.pb" | awk '{print $1}') > 36 )); then
+      content="$(head -c 30 "$tmp_dir/item-$i.pb")"
+      if (( $(wc -c "$tmp_dir/item-$i.pb" | awk '{print $1}') > 30 )); then
         content="$content..."
       fi
       echo "${content//|/ }|bash='$0' param1=copy param2=$i refresh=true terminal=false"
