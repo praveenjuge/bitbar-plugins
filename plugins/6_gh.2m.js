@@ -35,6 +35,7 @@ const redText = "| color=red size=14",
       normalText = "| size=14",
       boldText = "| color=" + boldColor + " size=14",
       heartEmoji = ":heart:",
+      smileEmoji = "😍",
       brokenHeartEmoji = ":broken_heart:";
 
 // Import Github Scraping Library
@@ -65,16 +66,18 @@ gh.scrapeContributionDataAndStats(userUrl, function(data) {
         // Set Displayed Emoji
         var visibleEmoji = data.commitsToday ? heartEmoji : brokenHeartEmoji;
 
-        // Log Output To Bitbar
-        if (compactUI == 'true') {
-            console.log(visibleEmoji + " " + commitsToday + contributionsTodayColor);
+        if (data.commitsToday == 0) {
+            console.log(brokenHeartEmoji + " " + commitsToday + contributionsTodayColor);
+        } else if (data.commitsToday > 25)  {
+            console.log(smileEmoji + " " + commitsToday + contributionsTodayColor);
+        } else {
+            console.log(heartEmoji + " " + commitsToday + contributionsTodayColor);
+        }
+
             console.log("---");
             console.log("Contributions");
             console.log("Today:", commitsToday, contributionsTodayColor);
-        } else {
-            console.log(visibleEmoji, " Contributions Today: ", commitsToday, visibleEmoji, contributionsTodayColor);
-            console.log("---");
-        }
+
         console.log("Total:", totalContributions, totalContributionsColor);
         if (contributionGoalTracking) {
             // Log Contribution Goal tracking if enabled
