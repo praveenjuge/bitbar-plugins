@@ -32,6 +32,7 @@ try {
 
 // Font, Color, and Emoji Settings
 const redText = "| color=red size=14",
+      greenText = "| color=green size=14",
       normalText = "| size=14",
       boldText = "| color=" + boldColor + " size=14",
       heartEmoji = ":heart:",
@@ -69,7 +70,7 @@ gh.scrapeContributionDataAndStats(userUrl, function(data) {
         if (data.commitsToday == 0) {
             console.log(brokenHeartEmoji + " " + commitsToday + contributionsTodayColor);
         } else if (data.commitsToday > 25)  {
-            console.log(smileEmoji + " " + commitsToday + contributionsTodayColor);
+            console.log(smileEmoji + " " + commitsToday + greenText);
         } else {
             console.log(heartEmoji + " " + commitsToday + contributionsTodayColor);
         }
