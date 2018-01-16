@@ -4,13 +4,15 @@
 # <bitbar.author>Federico Brigante</bitbar.author>
 # <bitbar.author.github>bfred-it</bitbar.author.github>
 # <bitbar.desc>Checks the connection to Internet and tells you in a single character.</bitbar.desc>
-# <bitbar.image>http://i.imgur.com/I8lF8st.png</bitbar.image>
+# <bitbar.image>http://i.imgur.com/I8lF8st.png</bitbar.image>\
+
+# $0=substr($0,1,length($0)-1); 
 
 ping_timeout=1
 ping_address=8.8.8.8
 
 EXTERNAL_IP4=$(curl -4 --connect-timeout 3 -s http://v4.ipv6-test.com/api/myip.php || echo None)
-[[ "$EXTERNAL_IP4" == "None" ]] && WHOIS="" || WHOIS=$(whois "$EXTERNAL_IP4" | awk '/descr: / {$1=""; $0=substr($0,1,length($0)-1); print $0 }' | head -n 1)
+[[ "$EXTERNAL_IP4" == "None" ]] && WHOIS="" || WHOIS=$(whois "$EXTERNAL_IP4" | awk '/descr: / {$1=""; print $0 }' | head -n 1)
 LIP=$(ifconfig | awk "/inet / { print \$2 \" | terminal=false bash='$0' param1=copy param2=\" \$2 }" | sed -n '2p')
 
 notify () {
